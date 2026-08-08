@@ -1,0 +1,39 @@
+REQUIREMENTS FOR THIS SCRIPT
+=============================
+
+1. PYTHON VERSION
+   Python 3.14.6 or higher (3.14+ recommended)
+
+2. PYTHON PACKAGES (install via pip)
+   google-genai
+   python-dotenv
+
+   Install command:
+   pip install google-genai python-dotenv
+
+3. ENVIRONMENT FILE
+   File name: key.env
+   Location: same folder as the script (script directory)
+   Contents:
+   GEMINI_API_KEY=your_actual_api_key_here
+
+4. API KEY
+   A valid Gemini API key from Google AI Studio
+   Must have active quota / billing enabled for the model used
+
+5. MODEL NAME
+   Currently set to: gemini-3.5-flash
+   Verify this model name exists and is available for your API key as they keep changing frequently as the new version is deployed
+   before running (model names change over time)
+
+6. INTERNET CONNECTION
+   Required, since the script calls an external API
+
+7. GIT / SECURITY
+   Add key.env to .gitignore
+   If key.env was ever committed, run:
+   git rm --cached key.env
+
+8. RUNTIME NOTE
+   main() runs immediately when the file is executed or imported
+   Run this script directly, not as an imported module
