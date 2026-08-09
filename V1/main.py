@@ -19,7 +19,6 @@ def main():
 
     client = genai.Client(api_key=API_KEY)
 
-    # Chat history holds the full conversation so the model has context
     chat_history = []
 
     print("Echo is ready. Type 'quit' to exit.\n")
@@ -31,12 +30,12 @@ def main():
             print("Goodbye!")
             break
 
-        chat_history.append({"role": "user", "content": n})
+        chat_history.append({"role": "user", "parts": [{"text": n}]})
 
         try:
             response = client.models.generate_content(
                 model="gemini-3.5-flash",
-                contents=n,
+                contents=chat_history,
             )
             reply = response.text
 
@@ -44,7 +43,7 @@ def main():
             print(f"Error: Could not get a response ({e})")
             continue
 
-        chat_history.append({"role": "assistant", "content": reply})
+        chat_history.append({"role": "model", "parts": [{"text": reply}]})
         print(f"Echo: {reply}\n")
 main()
 def test():
